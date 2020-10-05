@@ -1,20 +1,8 @@
 body{
-    color:#000000;
-    background-color:#ffffdd;
+    color:white;
+    background-color:black;
     font-family:jura;
   }
-
-:root * {
-	transition: color 1000ms linear, background-color 1000ms linear;
-}
-  
-@media (prefers-color-scheme: dark){
-	body {
-		color: #ffffff;
-		background-color: #252525;
-	}
-}
-    
   h1{
    text-align:center;
     color:white
