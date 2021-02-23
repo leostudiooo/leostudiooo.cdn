@@ -207,7 +207,7 @@
         player.find(".player-body>.list-toggle").css("opacity","0");
         player.setSongname("播放器加载中...");
         $.ajax({
-            url:"https://tenmahw.com/tPlayer/tplayer.php?id=" + playlist,
+            url:"https://gcm.tenmahw.com/resolve/playlist?id=" + playlist,
             success:function(data) {
                 window.createPlayer = undefined;
                 let tracks = data.result.tracks;
