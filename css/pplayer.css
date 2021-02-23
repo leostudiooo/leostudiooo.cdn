@@ -11,6 +11,7 @@ div.player {
     transition:all .3s linear;
     overflow:hidden;
     max-height:452px;
+    z-index:7;
 }
 div.player * {
     text-align:left;
@@ -61,7 +62,7 @@ div.player  > .control-overlay {
     left:52px;
     bottom:0;
     right:0;
-    z-index:1;
+    z-index:8;
     border:none;
 }
 div.player > .control-overlay table {
@@ -196,7 +197,7 @@ div.lyric {
     pointer-events:none;
     transition:all .3s linear;
     width:100%;
-    z-index:2;
+    z-index:9;
 }
 div.lyric,div.lyric > * {
     transition:all .1s linear;
