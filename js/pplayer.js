@@ -1,4 +1,3 @@
-
 !function($) {
     function getAverageRGB(imgEl) {
         var blockSize = 5,
@@ -68,7 +67,7 @@
         }
         return obj;
     }
-    let playlist = "6630417901",songs = [],currentPlaying = null,lrc = null,lrcStartPos = 0,transLrc = null,transLrcStartPos = 0,overlayAval = false,cPos = {x:0,y:0},errorCount = 0,lastMainLrc = "",lastSubLrc = "",cUrlReq = null;
+    let playlist = "2717890285",songs = [],currentPlaying = null,lrc = null,lrcStartPos = 0,transLrc = null,transLrcStartPos = 0,overlayAval = false,cPos = {x:0,y:0},errorCount = 0,lastMainLrc = "",lastSubLrc = "",cUrlReq = null;
     function randNfloor(min,max) {
         return Math.random()*(max-min+1)+min;
     }
@@ -95,7 +94,7 @@
             cUrlReq.abort();
         }
         cUrlReq = $.ajax({
-            url: "https://cm.luotianyi.me/api/song/url?id=" + cid,
+            url: "https://gcm.tenmahw.com/song/url?id=" + cid,
             success: function(data) {
                 if (cid != currentPlaying.id || player.find("audio").attr("src") != undefined) {
                     return;
@@ -186,7 +185,7 @@
         transLrc = null;
         print("Try to fetch lyric for " + currentPlaying.name);
         $.ajax({
-            url:"https://api.texl.top/netease/lyric/?id=" + id,
+            url:"https://gcm.tenmahw.com/resolve/lyric?id=" + id,
             success:function(data) {
                 if (currentPlaying.id != id) {return;}
                 if (data.code != 200) {print("Can't fetch lyric for " + currentPlaying.name);return;}
@@ -211,9 +210,9 @@
         if (lrc != null&&!player.find("audio")[0].paused) {
             for (let i = lrcStartPos;i<lrc.length;i++) {
                 let line = lrc[i];
-                if (i == lrc.length-1||lrc[i+1].Time > aud.currentTime*1000) {
-                    if (lrc[i].Time < aud.currentTime*1000) {
-                        mainLrc = line.Value;
+                if (i == lrc.length-1||lrc[i+1].time > aud.currentTime*1000) {
+                    if (lrc[i].time < aud.currentTime*1000) {
+                        mainLrc = line.value;
                         if (transLrc == null&&i != lrc.length-1) {
                             subLrc = lrc[i+1].Value;
                         }
@@ -228,9 +227,9 @@
             if (transLrc != null&&mainLrc != "") {
                 for (let i = transLrcStartPos;i<transLrc.length;i++) {
                     let line = transLrc[i];
-                    if (i == transLrc.length-1||transLrc[i+1].Time > aud.currentTime*1000) {
-                        if (transLrc[i].Time < aud.currentTime*1000) {
-                            subLrc = line.Value;
+                    if (i == transLrc.length-1||transLrc[i+1].time > aud.currentTime*1000) {
+                        if (transLrc[i].time < aud.currentTime*1000) {
+                            subLrc = line.value;
                         } else {
                             transLrcStartPos = 0;
                             break;
@@ -447,7 +446,7 @@
     });
     print("Fetching playlist...");
     $.ajax({
-        url:"https://tenmahw.com/tPlayer/tplayer.php?id=" + playlist,
+        url:"https://gcm.tenmahw.com/resolve/playlist?id=" + playlist,
         success:function(data) {
             if (data.code != 200) {
                 print("Can't fetch playlist from Netease");
