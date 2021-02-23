@@ -188,7 +188,7 @@
             url:"https://gcm.tenmahw.com/resolve/lyric?id=" + id,
             success:function(data) {
                 if (currentPlaying.id != id) {return;}
-                if (data.code != 200) {print("Can't fetch lyric for " + currentPlaying.name);return;}
+                //if (data.code != 200) {print("Can't fetch lyric for " + currentPlaying.name);return;}
                 if (data.lyric == null) {print("No lyric for " + currentPlaying.name);return;}
                 lrc = data.lyric.lrc;
                 if (data.lyric.tlrc) {
@@ -214,7 +214,7 @@
                     if (lrc[i].time < aud.currentTime*1000) {
                         mainLrc = line.value;
                         if (transLrc == null&&i != lrc.length-1) {
-                            subLrc = lrc[i+1].Value;
+                            subLrc = lrc[i+1].value;
                         }
                     } else {
                         lrcStartPos = 0;
