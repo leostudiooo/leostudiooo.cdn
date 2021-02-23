@@ -191,7 +191,8 @@ div.lyric {
     left:50%;
     bottom:0;
     transform:translate(-50%);
-    text-shadow:0 0 5px white;
+    color:white;
+    text-shadow:0 0 5px black;
     pointer-events:none;
     transition:all .3s linear;
     width:100%;
